@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Path@Penn — Register (Prototype)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --penn-blue:#011F5B;
+      --bg:#F7F8FA;
+      --ink:#111827;
+      --muted:#6B7280;
+      --chip:#EEF2FF;
+      --chip-ink:#1F2937;
+      --chip-strong:#EAF7EE;
+      --chip-strong-ink:#0B4A1E;
+      --card:#FFFFFF;
+      --line:#E5E7EB;
+      --accent:#2563EB;
+      --ok:#16A34A;
+      --danger:#B91C1C;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--bg);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--ink);
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding:24px;
+    }
+    .phone{
+      width:390px; height:844px; background:#fff;
+      border:1px solid var(--line);
+      border-radius:28px; overflow:hidden;
+      box-shadow:0 8px 24px rgba(0,0,0,.08);
+      display:flex; flex-direction:column;
+    }
+    header{
+      background:var(--penn-blue); color:#fff;
+      padding:16px 18px 12px; position:relative;
+    }
+    header h1{font-size:18px; margin:0; font-weight:600}
+    .avatar{
+      position:absolute; right:14px; top:14px; width:28px; height:28px;
+      border-radius:999px; background:#fff2; display:grid; place-items:center; font-size:12px;
+    }
+    .search{
+      padding:12px 18px; background:#fff; border-bottom:1px solid var(--line);
+    }
+    .searchbar{
+      display:flex; gap:8px; align-items:center;
+      background:var(--bg); border:1px solid var(--line);
+      padding:10px 12px; border-radius:12px;
+    }
+    .searchbar input{
+      border:0; outline:0; background:transparent; width:100%;
+      font-size:14px; color:var(--ink);
+    }
+    .searchbar .icon{font-size:16px; color:var(--muted)}
+    .content{padding:8px 14px 88px; overflow:auto; background:var(--bg); flex:1}
+    .course-card{
+      background:var(--card); border:1px solid var(--line); border-radius:16px;
+      padding:14px; margin:10px 4px; display:flex; flex-direction:column; gap:10px;
+    }
+    .course-top{display:flex; align-items:center; justify-content:space-between; gap:8px}
+    .code{font-weight:600; font-size:14px; color:var(--penn-blue)}
+    .chips{display:flex; gap:6px; flex-wrap:wrap; justify-content:flex-end}
+    .chip{
+      background:var(--chip); color:var(--chip-ink); border:1px solid var(--line);
+      border-radius:999px; padding:6px 10px; font-size:12px; line-height:1; white-space:nowrap;
+    }
+    .chip.ok{background:var(--chip-strong); color:var(--chip-strong-ink); border-color:#D1FAE5}
+    .title{font-size:15px; font-weight:600}
+    .meta{display:flex; gap:8px; flex-wrap:wrap; color:var(--muted); font-size:13px}
+    .dot::before{content:"• "; color:#9CA3AF}
+    .req{
+      background:#FBFBFD; border:1px dashed var(--line); border-radius:12px; padding:10px; display:flex; flex-direction:column; gap:8px;
+    }
+    .req .label{font-size:12px; color:var(--muted)}
+    .options{display:flex; flex-wrap:wrap; gap:8px}
+    .pill{
+      border:1px solid var(--line); border-radius:999px; padding:8px 10px; font-size:13px; background:#fff;
+    }
+    .actions{display:flex; gap:8px}
+    .btn{
+      width:100%; border:0; border-radius:12px; padding:12px; font-weight:600; font-size:14px;
+      background:#E5E7EB; color:#6B7280; cursor:not-allowed;
+    }
+    .link{color:var(--accent); text-decoration:none; font-weight:600; font-size:13px}
+    .sticky{
+      position:sticky; bottom:0; background:#fff; border-top:1px solid var(--line);
+      padding:12px 16px; display:flex; align-items:center; justify-content:space-between;
+    }
+    .cartbtn{
+      background:var(--penn-blue); color:#fff; border:0; border-radius:12px; padding:12px 16px; font-weight:600;
+      font-size:14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="phone" role="application" aria-label="Path@Penn Registration Prototype">
+    <header>
+      <h1>Path@Penn</h1>
+      <div class="avatar" aria-hidden="true">EG</div>
+    </header>
+
+    <div class="search">
+      <div class="searchbar" role="search">
+        <span class="icon">🔎</span>
+        <input type="text" placeholder="Search by code or title" aria-label="Search courses" />
+        <span class="icon" aria-hidden="true">⚙️</span>
+      </div>
+    </div>
+
+    <main class="content">
+      <!-- Course 1 -->
+      <article class="course-card" aria-labelledby="cis1200-title">
+        <div class="course-top">
+          <div class="code">CIS 1200</div>
+          <div class="chips">
+            <span class="chip">Difficulty 3.1/5</span>
+            <span class="chip ok">Workload 10–12 hrs/wk</span>
+          </div>
+        </div>
+        <div id="cis1200-title" class="title">Programming Languages and Techniques I</div>
+        <div class="meta">
+          <span>LEC 001 · MW 10:15–11:45 · Towne 100</span>
+          <span class="dot">Seats 8/150</span>
+        </div>
+
+        <div class="req" aria-describedby="cis1200-req">
+          <div id="cis1200-req" class="label">Required recitation</div>
+          <div class="options" role="group" aria-label="CIS 1200 recitations">
+            <span class="pill">R01 · F 9:00–9:50 · DRL 3C6</span>
+            <span class="pill">R02 · F 10:00–10:50 · DRL 3C6</span>
+            <span class="pill">R03 · F 11:00–11:50 · DRL 3C6</span>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="btn" aria-disabled="true">Select a recitation to add</button>
+          <a class="link" href="#" aria-label="View details for CIS 1200">Details ▸</a>
+        </div>
+      </article>
+
+      <!-- Course 2 -->
+      <article class="course-card" aria-labelledby="chem1012-title">
+        <div class="course-top">
+          <div class="code">CHEM 1012</div>
+          <div class="chips">
+            <span class="chip">Difficulty 2.6/5</span>
+            <span class="chip">Workload 6–8 hrs/wk</span>
+          </div>
+        </div>
+        <div id="chem1012-title" class="title">General Chemistry I with Recitation</div>
+        <div class="meta">
+          <span>LEC 001 · TR 12:00–13:30 · CHEM 101</span>
+          <span class="dot">Seats 42/200</span>
+        </div>
+
+        <div class="req" aria-describedby="chem1012-req">
+          <div id="chem1012-req" class="label">Required recitation</div>
+          <div class="options">
+            <span class="pill">R11 · W 13:00–13:50 · CHEM 197</span>
+            <span class="pill">R12 · W 14:00–14:50 · CHEM 197</span>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="btn" aria-disabled="true">Select a recitation to add</button>
+          <a class="link" href="#" aria-label="View details for CHEM 1012">Details ▸</a>
+        </div>
+      </article>
+    </main>
+
+    <div class="sticky" role="toolbar" aria-label="Cart actions">
+      <span>Cart (0)</span>
+      <button class="cartbtn">Review</button>
+    </div>
+  </div>
+</body>
+</html>
